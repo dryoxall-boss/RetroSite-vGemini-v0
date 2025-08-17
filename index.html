@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-g">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RetroScroll Infinite</title>
-    <meta name="description" content="An intentionally addictive, retro-styled infinite scroll experience.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👾</text></svg>">
+    <title>RetroGrid v2.0</title>
+    <meta name="description" content="A modern, high-tech infinite scroll experience with a retro soul.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📟</text></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,46 +16,36 @@
 
     <script type="module" src="app.js"></script>
 </head>
-<body class="retro-theme">
-
-    <div id="cat-sprite" class="cat-sprite" aria-hidden="true"></div>
+<body>
+    <div class="crt-scanlines"></div>
 
     <header class="main-header">
         <div class="header-content">
-            <h1 class="logo">
-                <img src="data:image/gif;base64,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" alt="RetroScroll">
-                RetroScroll
-            </h1>
-            <marquee class="header-marquee" scrollamount="3">~*~ WELCOME 2 THE FUTURE OF THE PAST ~*~ SCROLL FOREVER ~*~ GAIN XP ~*~ HAVE FUN ~*~</marquee>
+            <h1 class="logo glitch" data-text="RetroGrid">RetroGrid</h1>
+            <div id="user-profile-header" class="user-profile-header">
+                <span id="header-username"></span>
+                <div id="header-avatar" class="header-avatar"></div>
+            </div>
             <button id="hamburger-button" class="hamburger-button" aria-label="Open settings menu" aria-expanded="false" aria-controls="drawer">
                 <svg viewBox="0 0 100 80" width="24" height="24">
-                  <rect width="100" height="15" rx="8"></rect>
-                  <rect y="30" width="100" height="15" rx="8"></rect>
-                  <rect y="60" width="100" height="15" rx="8"></rect>
+                  <rect width="100" height="12" rx="6"></rect>
+                  <rect y="34" width="100" height="12" rx="6"></rect>
+                  <rect y="68" width="100" height="12" rx="6"></rect>
                 </svg>
             </button>
         </div>
     </header>
 
-    <div class="app-container">
+    <div class="dashboard-grid">
         <aside id="sidebar" class="sidebar">
-            <nav>
-                <button class="nav-button active" data-view="feed">
-                    <span class="icon">📰</span> Feed
-                </button>
-                <button class="nav-button" data-view="games">
-                    <span class="icon">🎮</span> Games
-                </button>
-                <button class="nav-button" data-view="about">
-                    <span class="icon">ℹ️</span> About
-                </button>
+            <nav class="main-nav">
+                <button class="nav-button active" data-view="feed">Feed</button>
+                <button class="nav-button" data-view="games">Arcade</button>
+                <button class="nav-button" data-view="about">About</button>
             </nav>
-            <div class="sidebar-footer">
-                <div class="visitor-counter">
-                    <p>VISITORS</p>
-                    <span id="visitor-count">0001337</span>
-                </div>
-                <img src="data:image/gif;base64,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" alt="Now with HTML5!">
+            <div class="widget-container">
+                <div id="weather-widget" class="widget"></div>
+                <div id="trends-widget" class="widget"></div>
             </div>
         </aside>
 
@@ -67,38 +57,35 @@
                 <h2>Arcade Zone</h2>
                 <div id="games-list" class="games-list"></div>
                 <div id="game-arena" class="game-arena">
-                    <div id="game-viewport"></div>
-                    <button id="close-game-button" class="close-game-button" aria-label="Close game">&times;</button>
+                    <div id="game-viewport" class="game-viewport"></div>
+                    <button id="close-game-button" class="close-game-button" aria-label="Close game">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                    </button>
                 </div>
             </div>
             <div id="about-view" class="view">
                 <div class="card about-card">
-                    <h2>About RetroScroll</h2>
-                    <p>This is a time machine to a simpler web, built with modern tech. It's a lightweight, fast, and accessible infinite scroll experience designed to be a delightful time-suck.</p>
-                    <p>Built with vanilla JS, CSS custom properties, and a lot of <span class="glitter">✨love✨</span> for the old internet.</p>
-                    <p>No frameworks. No tracking servers. Just you, the scroll, and the XP.</p>
+                    <div class="card-content">
+                        <h2>About RetroGrid</h2>
+                        <p>RetroGrid is a hyper-modern web experience infused with the soul of the early internet. It uses a vanilla JS frontend to simulate dynamic content aggregation from around the web, delivering it in a fast, gamified, infinite-scroll feed.</p>
+                        <p>This prototype demonstrates a high-tech UI, client-side state management, gamification, and a fully modular game engine—all without heavy frameworks.</p>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
     <nav id="mobile-nav" class="mobile-nav">
-        <button class="nav-button active" data-view="feed" aria-label="Feed">
-            <span class="icon">📰</span> <span class="label">Feed</span>
-        </button>
-        <button class="nav-button" data-view="games" aria-label="Games">
-            <span class="icon">🎮</span> <span class="label">Games</span>
-        </button>
-        <button id="mobile-stats-button" class="nav-button" aria-label="Open stats and settings">
-            <span class="icon">⚙️</span> <span class="label">Stats</span>
-        </button>
+        <button class="nav-button active" data-view="feed" aria-label="Feed">Feed</button>
+        <button class="nav-button" data-view="games" aria-label="Games">Arcade</button>
+        <button id="mobile-stats-button" class="nav-button" aria-label="Open stats and settings">Profile</button>
     </nav>
     
     <div id="drawer-overlay" class="drawer-overlay"></div>
     <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
         <div class="drawer-header">
-            <h2 id="drawer-title">Profile & Settings</h2>
-            <button id="close-drawer-button" class="close-drawer-button" aria-label="Close settings menu">&times;</button>
+            <h2 id="drawer-title" class="glitch" data-text="Profile & Stats">Profile & Stats</h2>
+            <button id="close-drawer-button" class="close-drawer-button" aria-label="Close menu">&times;</button>
         </div>
         <div class="drawer-content">
             <section class="drawer-section profile-card">
@@ -110,24 +97,24 @@
             </section>
             
             <section class="drawer-section">
-                <h3>Your Stats</h3>
+                <h3>Progression</h3>
                 <ul class="stats-list" id="user-stats-list">
-                    <li>Visits: <strong id="stats-visits">0</strong></li>
-                    <li>Streak: <strong id="stats-streak">0 days 🔥</strong></li>
-                    <li>Distance: <strong id="stats-distance">0m</strong></li>
-                    <li>Level: <strong id="stats-level">1</strong></li>
-                    <li>XP: <strong id="stats-xp">0 / 100</strong></li>
+                    <li><span class="stat-label">Level</span><strong id="stats-level">1</strong></li>
+                    <li><span class="stat-label">XP</span><strong id="stats-xp">0 / 100</strong></li>
                 </ul>
                 <div class="xp-bar">
                     <div id="xp-bar-progress" class="xp-bar-progress"></div>
                 </div>
+                 <ul class="stats-list" id="user-stats-list-secondary">
+                    <li><span class="stat-label">Session Streak</span><strong id="stats-streak">0 days 🔥</strong></li>
+                    <li><span class="stat-label">Distance Scrolled</span><strong id="stats-distance">0m</strong></li>
+                    <li><span class="stat-label">Total Visits</span><strong id="stats-visits">0</strong></li>
+                </ul>
             </section>
             
             <section class="drawer-section">
                 <h3>Game Stats</h3>
-                <div id="game-stats-container">
-                    <p>Play some games to see your stats here!</p>
-                </div>
+                <div id="game-stats-container"></div>
             </section>
             
             <section class="drawer-section">
@@ -137,13 +124,13 @@
                     <div class="toggle-switch">
                         <input type="checkbox" id="theme-toggle" class="toggle-input">
                         <label for="theme-toggle" class="toggle-label">
-                            <span class="toggle-text-left">Retro</span>
-                            <span class="toggle-text-right">Chill</span>
+                            <span class="toggle-text-left">Grid</span>
+                            <span class="toggle-text-right">Light</span>
                         </label>
                     </div>
                 </div>
                  <div class="preference">
-                    <label for="sound-toggle">Sounds:</label>
+                    <label for="sound-toggle">UI Sounds:</label>
                     <div class="toggle-switch">
                         <input type="checkbox" id="sound-toggle" class="toggle-input" checked>
                         <label for="sound-toggle" class="toggle-label">
@@ -155,18 +142,15 @@
             </section>
 
             <section class="drawer-section">
-                <button id="reset-button" class="button-danger">Reset All Data</button>
-            </section>
-
-            <section id="debug-panel" class="drawer-section debug-panel">
-                <h3>Debug Info</h3>
-                <pre id="debug-content"></pre>
+                <button id="reset-button" class="button-danger">Factory Reset</button>
             </section>
         </div>
     </aside>
 
     <div id="status-chip" class="status-chip">
-        <span id="chip-level">Lvl 1</span> | <span id="chip-xp">0 XP</span> | <span id="chip-streak">🔥 0</span>
+        <span>LVL <strong id="chip-level">1</strong></span>
+        <div class="chip-xp-bar"><div id="chip-xp-bar-progress"></div></div>
+        <span>🔥 <strong id="chip-streak">0</strong></span>
     </div>
 
 </body>
